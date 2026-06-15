@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: brew style
+        run: brew style Formula/edx.rb
+
+      - name: brew audit
+        # `audit` checks live download URLs and checksums, which only exist
+        # after the first real release. Until then it is informational.
+        run: brew audit --formula Formula/edx.rb || true
