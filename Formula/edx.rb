@@ -5,21 +5,21 @@
 class Edx < Formula
   desc "Edge Delta command-line interface"
   homepage "https://github.com/edgedelta/edx"
-  version "0.3.0"
+  version "0.4.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/edgedelta/edx/releases/download/v0.3.0/edx_0.3.0_Darwin_x86_64.tar.gz"
-      sha256 "c0bd9b4ae9355e0f0ecf73679c5090b77e6b31595dcb8eef7d854b52414363ad"
+      url "https://github.com/edgedelta/edx/releases/download/v0.4.0/edx_0.4.0_Darwin_x86_64.tar.gz"
+      sha256 "b8c1d4fc15af8b61ebbafc5a86bf8405a5dfb03704fcc62b98722c6cf9bc2994"
 
       define_method(:install) do
         bin.install "edx"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/edgedelta/edx/releases/download/v0.3.0/edx_0.3.0_Darwin_arm64.tar.gz"
-      sha256 "6f8e524114e3535178849484263c99a61c37ff7ec1ef6789747d2a3d217530dd"
+      url "https://github.com/edgedelta/edx/releases/download/v0.4.0/edx_0.4.0_Darwin_arm64.tar.gz"
+      sha256 "fdd66e96f100bd1de956577703239d1df27c174597f7c0cf61ab0219ad6affcc"
 
       define_method(:install) do
         bin.install "edx"
@@ -29,19 +29,31 @@ class Edx < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/edgedelta/edx/releases/download/v0.3.0/edx_0.3.0_Linux_x86_64.tar.gz"
-      sha256 "6a8a2f0b61be567b5fd46ecbaaa81a2d8658984c53b46d9f7baded41fce722f5"
+      url "https://github.com/edgedelta/edx/releases/download/v0.4.0/edx_0.4.0_Linux_x86_64.tar.gz"
+      sha256 "e7303b69120e8dfe4ef90a0e1f5943b67440d248e7160d696b717fcb8aec8b59"
       define_method(:install) do
         bin.install "edx"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/edgedelta/edx/releases/download/v0.3.0/edx_0.3.0_Linux_arm64.tar.gz"
-      sha256 "1800bcd84d9546b229ddc0aa4814031b64fffde61df356f225be49fc20ab779b"
+      url "https://github.com/edgedelta/edx/releases/download/v0.4.0/edx_0.4.0_Linux_arm64.tar.gz"
+      sha256 "7d067de80229a1752951d0f7880dacb1b3218383dd2f4d0b3db6983ab635f62b"
       define_method(:install) do
         bin.install "edx"
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      ▲ EDGE DELTA · edx
+
+      Get started:
+        edx auth login      # sign in (opens your browser)
+        edx --help          # explore commands
+
+      Docs: https://github.com/edgedelta/edx
+    EOS
   end
 
   test do
